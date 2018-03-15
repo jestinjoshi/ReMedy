@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toLogin(View view) {
-
+        Intent intent = new Intent(this,UserAreaActivity.class);
+        startActivity(intent);
     }
 }
 
