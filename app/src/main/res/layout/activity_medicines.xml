@@ -18,12 +18,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Medicine Name:" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/colorAccent" />
 
@@ -34,31 +36,41 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Dosage:"/>
+                android:layout_weight="1"
+                android:text="Dosage (mg):"/>
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Days:"/>
             <CheckBox
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Everyday"
                 android:id="@+id/everydayCheckbox"
                 android:onClick="onSelectEveryday"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/weekdayCheckbox">
+                android:id="@+id/weekdayCheckbox"
+                android:layout_marginStart="12dp">
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,15 +108,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Time:"/>
 
-            <EditText
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/time"
-                android:inputType="text"/>
+                android:layout_weight="2"
+                android:id="@+id/timeLayout"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/time"
+                    android:inputType="text"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -112,14 +134,14 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:contentDescription="Add Medicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:background="@color/colorAccent"
+        android:contentDescription="Add Medicine"
         android:onClick="addMedicine"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:backgroundTint="?android:attr/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_save" />
 </RelativeLayout>
