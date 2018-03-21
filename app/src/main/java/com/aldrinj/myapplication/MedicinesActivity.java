@@ -3,15 +3,23 @@ package com.aldrinj.myapplication;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import static android.view.View.*;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.aldrinj.myapplication.RegisterActivity.myDataBase;
 
 public class MedicinesActivity extends AppCompatActivity {
@@ -25,6 +33,7 @@ public class MedicinesActivity extends AppCompatActivity {
 
         final EditText timeInput = findViewById(R.id.time);
         timeInput.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 Calendar mCurrentTime = Calendar.getInstance();
@@ -35,7 +44,10 @@ public class MedicinesActivity extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         timeInput.setText(selectedHour + ":" + selectedMinute);
-                        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                        View timeLayout=findViewById(R.id.timeLayout);
+                        TextView textView=new TextView(MedicinesActivity.this);
+                        textView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+                        ((LinearLayout)timeLayout).addView(textView);
                     }
                 }, hour, minute, false);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
