@@ -30,30 +30,6 @@ public class MedicinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicines);
 
         myDataBase.execSQL("CREATE TABLE IF NOT EXISTS MedicineTable(Name VARCHAR, Doasge INTEGER, Time1 TIMESTAMP, Time2 TIMESTAMP, Time3 TIMESTAMP, Time4 TIMESTAMP);");
-
-        final EditText timeInput = findViewById(R.id.time);
-        timeInput.setOnClickListener(new OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                Calendar mCurrentTime = Calendar.getInstance();
-                int hour = mCurrentTime.get(Calendar.HOUR);
-                int minute = mCurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(MedicinesActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        timeInput.setText(selectedHour + ":" + selectedMinute);
-                        View timeLayout=findViewById(R.id.timeLayout);
-                        TextView textView=new TextView(MedicinesActivity.this);
-                        textView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-                        ((LinearLayout)timeLayout).addView(textView);
-                    }
-                }, hour, minute, false);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-            }
-        });
     }
 
     public void addMedicine(View view) {
@@ -71,4 +47,21 @@ public class MedicinesActivity extends AppCompatActivity {
             everydaySelect.setVisibility(View.VISIBLE);
         }
     }
-}
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void timeInput(final View view) {
+
+        Calendar mCurrentTime = Calendar.getInstance();
+        int hour = mCurrentTime.get(Calendar.HOUR);
+        int minute = mCurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(MedicinesActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                ((EditText)view).setText(selectedHour + ":" + selectedMinute);
+            }
+        }, hour, minute, false);//Yes 24 hour time
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
+    }
+    }
