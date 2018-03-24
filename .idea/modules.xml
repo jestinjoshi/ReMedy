@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://E:\ReMedy\MyApplication.iml" filepath="E:\ReMedy\MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReMedy.iml" filepath="$PROJECT_DIR$/ReMedy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\ReMedy\app\app.iml" filepath="E:\ReMedy\app\app.iml" />
     </modules>
   </component>
 </project>
