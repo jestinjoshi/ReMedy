@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".MedicinesActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:titleTextColor="@android:color/white"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:background="@color/colorPrimary"/>
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="12dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,6 +37,7 @@
 
             <EditText
                 android:layout_width="0dp"
+                android:id="@+id/mName"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:shadowColor="@color/colorAccent" />
@@ -46,6 +56,7 @@
                 android:text="Dosage (mg):" />
 
             <EditText
+                android:id="@+id/dosage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -82,37 +93,44 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Monday" />
+                    android:text="Monday"
+                    android:id="@+id/monday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tuesday" />
+                    android:text="Tuesday"
+                    android:id="@+id/tuesday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wednesday" />
+                    android:text="Wednesday"
+                    android:id="@+id/wednesday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thursday" />
+                    android:text="Thursday"
+                    android:id="@+id/thursday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Friday" />
+                    android:text="Friday"
+                    android:id="@+id/friday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Saturday" />
+                    android:text="Saturday"
+                    android:id="@+id/saturday"/>
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sunday" />
+                    android:text="Sunday"
+                    android:id="@+id/sunday"/>
 
             </LinearLayout>
 
@@ -127,6 +145,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:text="Time:" />
 
             <LinearLayout
@@ -136,33 +155,39 @@
                 android:layout_weight="2"
                 android:orientation="vertical">
 
-                <EditText
+                <Button
                     android:id="@+id/time1"
+                    android:tag="time1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
                     android:onClick="timeInput"/>
 
-                <EditText
+                <Button
                     android:id="@+id/time2"
+                    android:tag="time2"
+                    android:hint="Time 2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:onClick="timeInput"/>
 
-                <EditText
+                <Button
                     android:id="@+id/time3"
+                    android:tag="time3"
+                    android:hint="Time 3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:onClick="timeInput"/>
 
-                <EditText
+                <Button
                     android:id="@+id/time4"
+                    android:tag="time4"
+                    android:hint="Time 4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:onClick="timeInput"/>
 
             </LinearLayout>
 
@@ -171,19 +196,5 @@
     </LinearLayout>
 
 </ScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:background="@color/colorAccent"
-        android:contentDescription="Add Medicine"
-        android:onClick="addMedicine"
-        app:backgroundTint="?android:attr/colorPrimary"
-        app:fabSize="normal"
-        app:srcCompat="@android:drawable/ic_menu_save" />
 
-
-</RelativeLayout>
+</LinearLayout>

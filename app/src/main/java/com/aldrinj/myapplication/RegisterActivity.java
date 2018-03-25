@@ -10,19 +10,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static com.aldrinj.myapplication.MainActivity.myDataBase;
+
 public class RegisterActivity extends AppCompatActivity {
-    public static SQLiteDatabase myDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-//        Creation of database if it does not exist
-
-        myDataBase = openOrCreateDatabase("MyDataBase", MODE_PRIVATE, null);
-        myDataBase.execSQL("CREATE TABLE IF NOT EXISTS Medicine(Name VARCHAR,Username VARCHAR,Password VARCHAR,Age INTEGER);");
-        myDataBase.execSQL("INSERT INTO Medicine VALUES('Dummy','Dummy','Dummy',0);");
     }
 
     public void Register(View v) {

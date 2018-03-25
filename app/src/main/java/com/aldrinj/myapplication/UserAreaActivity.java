@@ -23,7 +23,7 @@ public class UserAreaActivity extends AppCompatActivity {
             String UserName = user.getText().toString();
             EditText pass = findViewById(R.id.LoginPassword);
             String Password = pass.getText().toString();
-            Cursor result = RegisterActivity.myDataBase.rawQuery("SELECT Username,Password FROM MEDICINE WHERE Username='" + UserName + "';", null);
+            Cursor result = MainActivity.myDataBase.rawQuery("SELECT Username,Password FROM MEDICINE WHERE Username='" + UserName + "';", null);
             result.moveToFirst();
 
             if (UserName.equals(result.getString(0))) {
