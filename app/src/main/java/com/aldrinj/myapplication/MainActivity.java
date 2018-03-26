@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myDataBase = openOrCreateDatabase("MyDataBase", MODE_PRIVATE, null);
-        myDataBase.execSQL("CREATE TABLE IF NOT EXISTS Medicine(Name VARCHAR,Username VARCHAR,Password VARCHAR,Age INTEGER);");
-        myDataBase.execSQL("INSERT INTO Medicine VALUES('Dummy','Dummy','Dummy',0);");
+        myDataBase.execSQL("CREATE TABLE IF NOT EXISTS UserTable(Name VARCHAR,Username VARCHAR,Password VARCHAR,Age INTEGER);");
+        myDataBase.execSQL("INSERT INTO UserTable VALUES('Dummy','Dummy','Dummy',0);");
     }
 
     public void toRegister(View view) {

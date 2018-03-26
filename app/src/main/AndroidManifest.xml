@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MedicinesActivity" android:label="Add Medicine" android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".MedicinesActivity"
+            android:label="Add Medicine"
+            android:theme="@style/NoActionBar" />
         <activity android:name=".UserAreaActivity" />
+        <activity android:name=".MedicineListActivity" />
     </application>
 
 </manifest>

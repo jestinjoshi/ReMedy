@@ -35,13 +35,13 @@ public class RegisterActivity extends AppCompatActivity {
 
 //        Search database for username
 
-        Cursor result = myDataBase.rawQuery("SELECT Username FROM MEDICINE WHERE Username='" + UserName + "';", null);
+        Cursor result = myDataBase.rawQuery("SELECT Username FROM UserTable WHERE Username='" + UserName + "';", null);
         result.moveToFirst();
 
 //        Validation
 
-        try{
-            if(result.getCount()!=0){
+        try {
+            if (result.getCount() != 0) {
                 if (UserName.equals(result.getString(0))) {
                     Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show();
                 } else if (Name.equals("")) {
@@ -58,20 +58,18 @@ public class RegisterActivity extends AppCompatActivity {
 
 //            If all the data is correct then it is inserted into the database and the next activity is brought up
 
-                    Intent intent = new Intent(this, MedicinesActivity.class);
+                    Intent intent = new Intent(this, MedicineListActivity.class);
                     startActivity(intent);
-                    myDataBase.execSQL("INSERT INTO MEDICINE VALUES('" + Name + "','" + UserName + "','" + Pass + "'," + Age + ");");
+                    myDataBase.execSQL("INSERT INTO UserTable VALUES('" + Name + "','" + UserName + "','" + Pass + "'," + Age + ");");
 
 
                 }
-            }
-            else{
-                Intent intent = new Intent(this, MedicinesActivity.class);
+            } else {
+                Intent intent = new Intent(this, MedicineListActivity.class);
                 startActivity(intent);
-                myDataBase.execSQL("INSERT INTO MEDICINE VALUES('" + Name + "','" + UserName + "','" + Pass + "'," + Age + ");");
+                myDataBase.execSQL("INSERT INTO UserTable VALUES('" + Name + "','" + UserName + "','" + Pass + "'," + Age + ");");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

@@ -1,6 +1,7 @@
 package com.aldrinj.myapplication;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -15,7 +16,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Timestamp;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -31,8 +32,8 @@ public class MedicinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicines);
 
         myDataBase.execSQL("CREATE TABLE IF NOT EXISTS MedicineTable(Name TEXT, Doasge INTEGER, " +
-                "Time1 TIMESTAMP, Time2 TIMESTAMP, Time3 TIMESTAMP, Time4 TIMESTAMP," +
-                "isMon BOOLEAN, isTue BOOLEAN, isWed BOOLEAN, isThu BOOLEAN, isFri BOOLEAN, isSat BOOLEAN, isSun BOOLEAN);");
+                "Time1 TIME, Time2 TIME, Time3 TIME, Time4 TIME," +
+                "isMon TEXT, isTue TEXT, isWed TEXT, isThu TEXT, isFri TEXT, isSat TEXT, isSun TEXT);");
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
     }
@@ -49,10 +50,10 @@ public class MedicinesActivity extends AppCompatActivity {
             try {
                 String name = ((EditText) findViewById(R.id.mName)).getText().toString();
                 int dose = Integer.parseInt(((EditText) findViewById(R.id.dosage)).getText().toString());
-                Timestamp timestamp1 = new Timestamp(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time1))).getText().toString()).getTime());
-                Timestamp timestamp2 = new Timestamp(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time2))).getText().toString()).getTime());
-                Timestamp timestamp3 = new Timestamp(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time3))).getText().toString()).getTime());
-                Timestamp timestamp4 = new Timestamp(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time4))).getText().toString()).getTime());
+                Time timestamp1 = new Time(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time1))).getText().toString()).getTime());
+                Time timestamp2 = new Time(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time2))).getText().toString()).getTime());
+                Time timestamp3 = new Time(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time3))).getText().toString()).getTime());
+                Time timestamp4 = new Time(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).parse(((Button) (findViewById(R.id.time4))).getText().toString()).getTime());
                 boolean everyday = ((CheckBox) findViewById(R.id.everydayCheckbox)).isChecked();
                 boolean[] weekday = {((CheckBox) findViewById(R.id.monday)).isChecked(),
                         ((CheckBox) findViewById(R.id.tuesday)).isChecked(),
@@ -63,13 +64,14 @@ public class MedicinesActivity extends AppCompatActivity {
                         ((CheckBox) findViewById(R.id.sunday)).isChecked()};
                 if (!everyday) {
 
-                    myDataBase.execSQL("INSERT INTO MedicineTable VALUES('" + name + "'," + dose + "," + timestamp1 + "," + timestamp2 + "," + timestamp3 + "," + timestamp4 + "," +
-                            "" + weekday[0] + "," + weekday[1] + "," + weekday[2] + "," + weekday[3] + "," + weekday[4] + "," + weekday[5] + "," + weekday[6] + ");");
+                    myDataBase.execSQL("INSERT INTO MedicineTable VALUES('" + name + "'," + dose + ",'" + timestamp1 + "','" + timestamp2 + "','" + timestamp3 + "','" + timestamp4 + "','" +
+                            "'" + weekday[0] + "','" + weekday[1] + "','" + weekday[2] + "','" + weekday[3] + "','" + weekday[4] + "','" + weekday[5] + "','" + weekday[6] + ");");
+                    startActivity(new Intent(this,MedicineListActivity.class));
 
                 } else {
-                    myDataBase.execSQL("INSERT INTO MedicineTable VALUES('" + name + "'," + dose + "," + timestamp1 + "," + timestamp2 + "," + timestamp3 + "," + timestamp4 + "," +
-                            "true,true,true,true,true,true,true);");
-
+                    myDataBase.execSQL("INSERT INTO MedicineTable VALUES('" + name + "'," + dose + ",'" + timestamp1 + "','" + timestamp2 + "','" + timestamp3 + "','" + timestamp4 + "'," +
+                            "'true','true','true','true','true','true','true');");
+                    startActivity(new Intent(this,MedicineListActivity.class));
                 }
 
             } catch (Exception e) {

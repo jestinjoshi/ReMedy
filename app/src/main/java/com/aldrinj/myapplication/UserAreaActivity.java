@@ -23,12 +23,12 @@ public class UserAreaActivity extends AppCompatActivity {
             String UserName = user.getText().toString();
             EditText pass = findViewById(R.id.LoginPassword);
             String Password = pass.getText().toString();
-            Cursor result = MainActivity.myDataBase.rawQuery("SELECT Username,Password FROM MEDICINE WHERE Username='" + UserName + "';", null);
+            Cursor result = MainActivity.myDataBase.rawQuery("SELECT Username,Password FROM UserTable WHERE Username='" + UserName + "';", null);
             result.moveToFirst();
 
             if (UserName.equals(result.getString(0))) {
                 if (Password.equals(result.getString(1))) {
-                    Intent intent = new Intent(this, MedicinesActivity.class);
+                    Intent intent = new Intent(this, MedicineListActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show();
