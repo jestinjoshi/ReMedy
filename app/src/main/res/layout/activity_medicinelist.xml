@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_medicineList"
+        app:titleTextColor="@android:color/white"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:background="@color/colorPrimary"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_medicineList"
         android:id="@+id/list_medicine"/>
 
 
