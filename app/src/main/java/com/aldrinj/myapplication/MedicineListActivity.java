@@ -47,6 +47,7 @@ public class MedicineListActivity extends AppCompatActivity {
     public void populateList() {
         ListView listView = findViewById(R.id.list_medicine);
 <<<<<<< HEAD
+<<<<<<< HEAD
         Cursor result = myDataBase.rawQuery("Select Name FROM MedicineTable;", null);
         if (result.getCount() != 0) {
             ArrayList<String> medicineNames = new ArrayList<>();
@@ -59,6 +60,8 @@ public class MedicineListActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
 
 =======
+=======
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
         RemedyDBHelper helper = new RemedyDBHelper(this);
         SQLiteDatabase database = helper.getReadableDatabase();
         Cursor result = database.rawQuery("SELECT * FROM " + MEDICINE_TABLE + " WHERE " + USER_NAME + " LIKE '" + MedicinesActivity.username + "';", null);
@@ -69,6 +72,9 @@ public class MedicineListActivity extends AppCompatActivity {
                 medicineNames.add(result.getString(1));
                 result.moveToPrevious();
             }
+<<<<<<< HEAD
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
+=======
 >>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
         }
         result.close();
@@ -78,7 +84,10 @@ public class MedicineListActivity extends AppCompatActivity {
     public void addMedicine(View view) {
         startActivity(new Intent(this, MedicinesActivity.class));
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
     }
 
     @Override
@@ -87,6 +96,9 @@ public class MedicineListActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+<<<<<<< HEAD
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
+=======
 >>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
     }
 }

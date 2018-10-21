@@ -41,6 +41,9 @@ public class MedicinesActivity extends AppCompatActivity {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
+=======
 >>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
     }
@@ -85,9 +88,15 @@ public class MedicinesActivity extends AppCompatActivity {
                         ((CheckBox) findViewById(R.id.sunday)).isChecked()};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     myDataBase.execSQL("INSERT INTO MedicineTable VALUES('" + name + "'," + dose + ",'" + timestamp1 + "','" + timestamp2 + "','" + timestamp3 + "','" + timestamp4 + "'," +
                             "'" + weekday[0] + "','" + weekday[1] + "','" + weekday[2] + "','" + weekday[3] + "','" + weekday[4] + "','" + weekday[5] + "','" + weekday[6] + "');");
                     startActivity(new Intent(this,MedicineListActivity.class));
+=======
+                RemedyDBHelper helper = new RemedyDBHelper(this);
+                SQLiteDatabase database = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+>>>>>>> 0a1a807cdbe086d26a59aef74db269433644b3dd
 =======
                 RemedyDBHelper helper = new RemedyDBHelper(this);
                 SQLiteDatabase database = helper.getWritableDatabase();
