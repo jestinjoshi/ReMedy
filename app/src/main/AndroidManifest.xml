@@ -9,6 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".MyIntentService"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".BroReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +31,10 @@
             android:name=".MedicinesActivity"
             android:label="Add Medicine"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".UserAreaActivity" />
-        <activity android:name=".MedicineListActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".MedicineListActivity"
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>
